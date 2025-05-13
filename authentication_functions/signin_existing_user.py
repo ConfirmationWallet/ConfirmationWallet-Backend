@@ -20,4 +20,18 @@ def signin_with_email_password(request):
         }
     )
 
+    # print(response.session)
+    return response
+
+def signin_with_phone_password(request):
+    phone = request.form.get('phone')
+    password = request.form.get('password')
+
+    response = supabase.auth.sign_in_with_password(
+        {
+            'phone': phone,
+            'password': password
+        }
+    )
+
     return response
