@@ -38,4 +38,4 @@ def detect_document_text(request):
     response = {
         "lines": lines,
     }
-    return blocks
+    return response
