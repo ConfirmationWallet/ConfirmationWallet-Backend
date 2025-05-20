@@ -45,7 +45,4 @@ def analyze_image(request):
 
     data_object = json.loads(response.output_text)
 
-    for key in data_object:
-        print(f"{key}: {data_object[key]}")
-
     return response.output_text
