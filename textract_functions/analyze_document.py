@@ -19,7 +19,7 @@ def analyze_document(request):
     image_base64 = base64.b64encode(image_data).decode("utf-8")
 
     response = textractClient.analyze_document(
-        Document={"Bytes": image_data}, FeatureTypes=["TABLES", "FORMS", "LAYOUT"]
+        Document={"Bytes": image_data}, FeatureTypes=["LAYOUT"]
     )
 
     blocks = response["Blocks"]
@@ -31,8 +31,6 @@ def analyze_document(request):
     # arrays to hold different block types
     LINES = []
     LAYOUTS = []
-    TABLES = []
-    FORMS = []
 
     # loop through the blocks and put them into the approprate list
     for block in blocks:
@@ -52,12 +50,6 @@ def analyze_document(request):
                     "questionable": questionable,
                 }
             )
-
-        # right now I don't have test data that has tables, or forms
-        elif BlockType == "TABLE":
-            TABLES.append(block)
-        elif BlockType == "FORM":
-            FORMS.append(block)
 
         # if its a layout block, we'll check to see if it has relationships (children lines)
         # then add the children lines to a list
@@ -80,7 +72,5 @@ def analyze_document(request):
             )
     return {
         "lines": LINES,
-        "tables": TABLES,
-        "forms": FORMS,
         "layouts": LAYOUTS,
     }
