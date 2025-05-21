@@ -1,9 +1,9 @@
-from helper_functions import supabase
+from primary_functions.authentication import get_user
 from flask import Flask, request, jsonify
 
 
 def get_user_from_session(request):
-    user = supabase.get_user_from_session(request)
+    user = get_user.get_user_from_session(request)
     if user:
         return user
     else:

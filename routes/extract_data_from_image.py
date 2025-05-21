@@ -1,5 +1,7 @@
-from openAI_functions.interpret_text import interpret_text
-from textract_functions.detect_document_text import detect_document_text
+from primary_functions.openAI.interpret_text import interpret_text
+from primary_functions.textract.detect_document_text import (
+    detect_document_text,
+)
 
 
 def extract_data_from_image(request):
