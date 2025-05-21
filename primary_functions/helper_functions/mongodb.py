@@ -43,7 +43,31 @@ def add_confirmation(confirmation_data, user):
     return result.inserted_id
 
 
-def get_confirmations(user):
+def deactivate_confirmation(confirmation_id):
     confirmation_collection = get_confirmations_collection()
-    confirmations = confirmation_collection.find({"user": user.id})
-    return confirmations
+
+    try:
+        result = confirmation_collection.update_one(
+            {"_id": confirmation_id}, {"$set": {"active": False}}
+        )
+        print("Deactivated confirmation:", result.modified_count)
+    except Exception as e:
+        print("Error deactivating confirmation:", e)
+        return e
+
+    return result.modified_count
+
+
+def activate_confirmation(confirmation_id):
+    confirmation_collection = get_confirmations_collection()
+
+    try:
+        result = confirmation_collection.update_one(
+            {"_id": confirmation_id}, {"$set": {"active": True}}
+        )
+        print("Deactivated confirmation:", result.modified_count)
+    except Exception as e:
+        print("Error deactivating confirmation:", e)
+        return e
+
+    return result.modified_count

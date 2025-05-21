@@ -1,5 +1,17 @@
 import json
 from datetime import datetime
+from openai import OpenAI
+import json
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
+
+def get_openai_client():
+    client = OpenAI(api_key=openai_api_key)
+    return client
 
 
 def format_openai_response(openai_response_string):

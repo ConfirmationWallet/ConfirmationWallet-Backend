@@ -18,10 +18,6 @@ def signin_with_email_password(request):
         {"email": email, "password": password}
     )
 
-    print(
-        "type of converted date: ", type(datetime.fromisoformat("2025-02-28T00:00:00"))
-    )
-
     return response
 
 

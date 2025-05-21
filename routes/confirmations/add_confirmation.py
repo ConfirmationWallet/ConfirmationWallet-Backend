@@ -1,8 +1,7 @@
-from helper_functions.mongodb import add_confirmation
-from helper_functions.supabase import get_user_from_session
-from helper_functions.openAI import format_openai_response
-from openAI_functions.analyze_image import analyze_image
-import json
+from primary_functions.helper_functions.mongodb import add_confirmation
+from primary_functions.authentication.get_user import get_user_from_session
+from primary_functions.helper_functions.openAI import format_openai_response
+from primary_functions.openAI.analyze_image import analyze_image
 
 
 def add_confirmation_route(request):

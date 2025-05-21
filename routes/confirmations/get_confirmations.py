@@ -1,5 +1,5 @@
-from helper_functions.mongodb import get_confirmations_collection
-from helper_functions.supabase import get_user_from_session
+from primary_functions.helper_functions.mongodb import get_confirmations_collection
+from primary_functions.authentication.get_user import get_user_from_session
 
 
 def get_all_confirmations_by_user(request):
